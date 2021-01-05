@@ -1,0 +1,30 @@
+name: Archive
+
+on:
+  # Triggers the workflow at scheduled intervals
+  schedule:
+    - cron: 0 0 * * *
+  
+  # Triggers the workflow when pushing changes to main
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download files
+        run: ./download.sh
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: ./output
+          retention-days: 90
