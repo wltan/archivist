@@ -3,7 +3,7 @@ name: Archive
 on:
   # Triggers the workflow at scheduled intervals
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 * * * *
   
   # Triggers the workflow when pushing changes to main
   push:
